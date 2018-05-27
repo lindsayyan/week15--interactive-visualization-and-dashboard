@@ -38,12 +38,17 @@ def welcome():
         f"/wfreq/[input]<br/>"
         f"- Check the weekly washing frequency of a sample<br/>"
         f"<br/>"
+
+
+        f"/sample/[input]<br/>"
+        f"- Check the top 10 sample values of each sample<br/>"
+        f"<br/>"
         )
 # 4. Define what to do when a user hits the /about route
-@app.route("/about")
-def about():
-    print("Server received request for 'About' page...")
-    return "Welcome to my 'About' page!"
+# @app.route("/about")
+# def about():
+#     print("Server received request for 'About' page...")
+#     return "Welcome to my 'About' page!"
 
 
 
@@ -80,12 +85,12 @@ def wfreq(sample):
 
 
 
-# @app.route('/wfreq/<sample>')
-# def wfreq(sample):
-#     WFREQ=Belly_Button_Biodiversity_Metadata[Belly_Button_Biodiversity_Metadata['SAMPLEID']==float(sample.split('_')[1])]['WFREQ']
-#     return jsonify(pd.DataFrame(WFREQ).to_dict(orient="lists")['WFREQ'])
-
-    
+@app.route('/sample/<sample_name>')
+def sample(sample_name):
+    sample2=belly_button_biodiversity_samples.sort_values(by=sample_name,ascending=False)[[sample_name]][0:10]
+    otu_id=belly_button_biodiversity_samples.sort_values(by=sample_name,ascending=False)[['otu_id']][0:10]
+    output=pd.concat([otu_id,sample2],axis=1)
+    return jsonify([output.to_dict(orient="lists")])
 
 if __name__ == "__main__":
     app.run(debug=True)
