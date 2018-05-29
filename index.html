@@ -7,13 +7,143 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Sample Pie Plot</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+
+<style>
+.dataselection {
+  background: lightgrey;
+  color: b;
+  text-align: center;
+  padding-bottom:  25px;
+  padding-top:  25px;
+  margin: 20px;
+  margin-left: 80px;
+  font-family:Arial;
+  float: left;
+  width: 60%;
+
+}
+
+
+.mytitle {
+  background: lightblue;
+  color: b;
+  text-align: center;
+  padding: 10px;
+  margin-left: 80px;
+  margin-top: 20px;
+  font-family:Arial;
+  float: left;
+  width: 60%;
+  border: solid;
+  border-color: lightblue;
+
+}
+.mytext {
+  background: white;
+  color: b;
+  text-align: left;
+  padding: 10px;
+  margin: 20px;
+  margin-left: 80px;
+  margin-top: -10px;
+  font-family:Arial;
+  float: left;
+  width: 60%;
+  border: solid;
+  border-color: lightblue;
+
+}
+.jumbotron {
+  background: lightgrey;
+  color: white;
+  text-align: center;
+  padding: 70px;
+  margin: 70px;
+  font-family:Arial;
+
+}
+.jumbotron h1 {
+  color: black;
+  font-size: 80px;
+
+} 
+.jumbotron p {
+  color: black;
+  font-size: 26px;
+}  
+.column {
+    float: left;
+    width: 39%;
+}
+
+.firstcolumn {
+    float: left;
+    width: 20%;
+    text-align: left;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+<!-- link href="css/bootstrap.min.css" rel="stylesheet"-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 
 <body>
-  <div id="plot"></div>
-  Select Sample </br></br>
-  <select id="selDataset" onchange="getData(this.value)">
+
+
+  <div class="jumbotron">
+  <div class="container">
+    <h1>Belly Button Biodiversity Dashboard</h1>
+    <p>Use the interactive charts below to explore the dataset</p>
+    <br>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="firstcolumn">
+   
+   
+        <div class="dataselection">
+         Select Sample</br></br>
+          <select id="selDataset" onchange="getData(this.value)">
+          </select>
+        </div>
+
+      <div  class="mytitle" >
+         Sample Metadata
+        </div>
+      <div id='mydiv' class="mytext" >
+         
+        </div>
+
+
+  </div>
+  <div id="plot2" class="column"></div>
+  <div id="myDiv" class="column"></div>
+</div>
+
+<div class="row">
+  <div id="plotBubble"></div>
+</div>
+
+
+
+
   <script src="plot.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>

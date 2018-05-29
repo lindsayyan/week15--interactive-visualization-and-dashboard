@@ -87,8 +87,8 @@ def wfreq(sample):
 
 @app.route('/sample/<sample_name>')
 def sample(sample_name):
-    sample2=belly_button_biodiversity_samples.sort_values(by=sample_name,ascending=False)[[sample_name]][0:10]
-    otu_id=belly_button_biodiversity_samples.sort_values(by=sample_name,ascending=False)[['otu_id']][0:10]
+    sample2=belly_button_biodiversity_samples.sort_values(by=sample_name,ascending=False)[[sample_name]]
+    otu_id=belly_button_biodiversity_samples.sort_values(by=sample_name,ascending=False)[['otu_id']]
     output=pd.concat([otu_id,sample2],axis=1)
     return jsonify([output.to_dict(orient="lists")])
 
